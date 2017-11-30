@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:23:51 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/11/30 19:15:13 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/11/30 21:10:19 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		ft_flush(char **dst, char **buff)
 	index = 0;
 	while (**buff && **buff != '\n')
 	{
-ft_putendl("In--");
 		(*dst)[index] = **buff;
 		(*buff)++;
 		index++;
@@ -31,7 +30,6 @@ ft_putstr(*dst);
 ft_putendl("|<|");
 	if (**buff == '\n')
 	{
-ft_putendl("JESUISLA");
 		(*buff)++;
 		return (-1);
 	}
@@ -45,7 +43,9 @@ int		get_next_line(const int fd, char **line)
 	size_t		ret;
 	int			i;
 
-	if (!((*line) = (char *)malloc(sizeof(char) * (BUFF_SIZE + ptr - tmp + 1))))
+ft_putstr("buff malloc = ");
+ft_putendl(ft_itoa(BUFF_SIZE + ft_strlen(tmp) - (ptr - tmp) + 1));
+	if (!((*line) = (char *)malloc(sizeof(char) * (BUFF_SIZE + ft_strlen(tmp) - (ptr - tmp) + 1))))
 		return (-1);
 ft_putstr("tmp = |>|");
 ft_putstr(tmp);
@@ -65,6 +65,8 @@ ft_putendl("|<|");
 	while (ret)
 	{
 		ret = read(fd, tmp, BUFF_SIZE);
+		if (ret == 0)
+			return (0);
 		tmp[ret] = '\0';
 		while (*ptr && *ptr != '\n')
 		{
@@ -78,8 +80,6 @@ ft_putendl("|<|");
 			ptr++;
 			ret = 0;
 		}
-		else if (ret == 0)
-			return (0);
 		else
 			ft_strext(line, ft_strlen(*line), BUFF_SIZE + 1);
 	}
