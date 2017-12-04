@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:48:29 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/11/30 21:03:36 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/04 15:09:27 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		main(int argc, char **argv)
 		ft_putendl_fd("Usage: one argument required with the name of the file to be read", 2);
 		return (0);
 	}
-	
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 	{
 		ft_putendl_fd("open file error", 2);
@@ -33,7 +32,7 @@ int		main(int argc, char **argv)
 	ret = 1;
 	while (ret == 1)
 	{
-		ft_putstr("|>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+		ft_putstr(">>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		ret = get_next_line(fd, &line);
 		ft_putstr("ret = ");
 		ft_putendl(ft_itoa(ret));
