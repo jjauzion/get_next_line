@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 17:54:00 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/06 14:56:59 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/06 17:40:27 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ typedef struct	s_file
 	struct s_file	*next;
 }				t_file;
 
-int			get_next_line(const int fd, char **line);
+int				get_next_line(const int fd, char **line);
 
 #endif
