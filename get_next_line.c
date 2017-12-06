@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:23:51 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/06 14:56:54 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/06 15:04:34 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,42 +18,14 @@ int		ft_flush(char *dst, t_file *f)
 	int		i;
 
 	i = ft_strlen(dst);
-/*ft_putendl("---------------------------------");
-ft_putstr("buff = |");
-ft_putstr(f->buff);
-ft_putendl("|");
-ft_putstr("dst = |");
-ft_putstr(dst);
-ft_putendl("|");
-ft_putstr("index = ");
-ft_putendl(ft_itoa(f->index));
-ft_putstr("ret = ");
-ft_putendl(ft_itoa(f->ret));
-ft_putstr("i = ");
-ft_putendl(ft_itoa(i));
-ft_putendl("---------------------------------");
-*/	while (f->index < f->ret && f->buff[f->index] != '\n')
+	while (f->index < f->ret && f->buff[f->index] != '\n')
 	{
 		dst[i] = f->buff[f->index];
 		f->index++;
 		i++;
 	}
 	dst[i] = '\0';
-/*ft_putendl("+++++++++++++++++++++++++++++++++");
-ft_putstr("buff = |");
-ft_putstr(f->buff);
-ft_putendl("|");
-ft_putstr("dst = |");
-ft_putstr(dst);
-ft_putendl("|");
-ft_putstr("index = ");
-ft_putendl(ft_itoa(f->index));
-ft_putstr("ret = ");
-ft_putendl(ft_itoa(f->ret));
-ft_putstr("i = ");
-ft_putendl(ft_itoa(i));
-ft_putendl("+++++++++++++++++++++++++++++++++");
-*/	if (f->index >= f->ret)
+	if (f->index >= f->ret)
 		return (0);
 	f->index++;
 	return (1);
@@ -73,8 +45,6 @@ int		ft_read(char **str, t_file *f)
 		*str = ft_strext(str, ft_strlen(*str), BUFF_SIZE + 1);
 	}
 }
-
-
 
 t_file	*ft_file_lst(const int fd, t_file **f)
 {
@@ -107,9 +77,8 @@ int		get_next_line(const int fd, char **line)
 	int				status;
 
 	f = ft_file_lst(fd, &file_lst);
-	if (!(str = (char *)malloc(sizeof(char) * (BUFF_SIZE + ft_strlen(f->buff) - f->index + 1))))
-				return (ERROR);
-	str[0] = '\0';
+	if (!(str = ft_strnew(BUFF_SIZE + ft_strlen(f->buff) - f->index + 1)))
+		return (ERROR);
 	if (ft_flush(str, f))
 	{
 		*line = ft_strdup(str);
@@ -119,7 +88,7 @@ int		get_next_line(const int fd, char **line)
 	if ((status = ft_read(&str, f)) == ERROR)
 		return (ERROR);
 	if (*str == '\0' && status == EOFF)
-	{	
+	{
 		ft_strdel(&str);
 		return (EOFF);
 	}
