@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:48:29 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/04 15:09:27 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/06 14:57:01 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@ int		main(int argc, char **argv)
 	{
 		ft_putstr(">>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		ret = get_next_line(fd, &line);
-		ft_putstr("ret = ");
-		ft_putendl(ft_itoa(ret));
+		ft_putstr("ret= ");
+		ft_putnbr(ret);
+		ft_putendl("");
 		ft_putstr("Line = |>|");
 		ft_putstr(line);
-		ft_putstr("|<|\nLine len = ");
-		ft_putendl(ft_itoa(ft_strlen(line)));
+		ft_putendl("|<|");
+		ft_strdel(&line);
 		ft_putendl("<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
-		getchar ();
 	}
-}
+	return(0);
+}	
