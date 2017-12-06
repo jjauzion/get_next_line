@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:23:51 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/06 15:04:34 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/06 15:57:16 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int		get_next_line(const int fd, char **line)
 	int				status;
 
 	f = ft_file_lst(fd, &file_lst);
-	if (!(str = ft_strnew(BUFF_SIZE + ft_strlen(f->buff) - f->index + 1)))
+	str = ft_strnew(BUFF_SIZE + ft_strlen(f->buff) - f->index + 1);
+	if (!f || !str)
 		return (ERROR);
 	if (ft_flush(str, f))
 	{
