@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:48:29 by jjauzion          #+#    #+#             */
-/*   Updated: 2017/12/06 15:09:23 by jjauzion         ###   ########.fr       */
+/*   Updated: 2017/12/13 10:21:47 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		main(int argc, char **argv)
 {
 	int		fd;
 	char	*line;
+	char	**s;
 	int		ret;
 
 	if (argc != 2)
@@ -30,10 +31,12 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	ret = 1;
+	line = NULL;
+	s = NULL;
 	while (ret == 1)
 	{
 		ft_putstr(">>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-		ret = get_next_line(fd, &line);
+		ret = get_next_line(fd, s);
 		ft_putstr("ret= ");
 		ft_putnbr(ret);
 		ft_putendl("");
